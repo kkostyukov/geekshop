@@ -13,21 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
+#from django.templatetags.static import static
+from django.conf.urls.static import static
 from django.urls import path
-from django.urls import path
-from django.contrib import admin
-import mainapp.views as mainapp
+
+from geekshop import settings
+from mainapp import views
 
 urlpatterns = [
-    path('', mainapp.main, name='main'),
-    path('products/', mainapp.products, name='products'),
-    path('contact/', mainapp.contact, name='contact'),
-    path('products/all', mainapp.products_all, name='products_all'),
-    path('products/home', mainapp.products_home, name='products_home'),
-    path('products/office', mainapp.products_office, name='products_office'),
-    path('products/modern', mainapp.products_modern, name='products_modern'),
-    path('products/classic', mainapp.products_classic, name='products_classic'),
-    # path('admin/', views.admin),
+    path('', views.main, name='main'),
+    path('products/', views.products, name='products'),
+    path('contact/', views.contact, name='contact'),
+    path('products/all', views.products_all, name='products_all'),
+    path('products/home', views.products_home, name='products_home'),
+    path('products/office', views.products_office, name='products_office'),
+    path('products/modern', views.products_modern, name='products_modern'),
+    path('products/classic', views.products_classic, name='products_classic'),
+    #path('admin/', views.admin),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
