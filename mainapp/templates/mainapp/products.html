@@ -6,8 +6,6 @@
 			<div class="header clearfix">
 				<a href="/" class="logo"></a>
 				{% include 'mainapp/includes/inc_menu.html' %}
-				<a href="#" class="search"></a>
-                <a href="#" class="basket"></a>
 			</div>
 		</div>
 {% endblock %}
@@ -18,44 +16,34 @@
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product">
-						<img src="/media/{{ product.image }}">
+					  <img src="/media/{{ hot_product.image }}">
 					</div>
 					<div class="slider-control">
-						<div class="block">
-							<a href="#"><img src="/static/img/controll.jpg" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						<div class="block">
-							<a href="#"><img src="/static/img/controll1.jpg" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
-						<div class="block">
-							<a href="#"><img src="/static/img/controll2.jpg" alt="">
-								<div class="text"></div>
-							</a>
-						</div>
+					  <div class="block">
+						<a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
+					  </div>
+					  <div class="block">
+						<a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
+					  </div>
+					  <div class="block">
+						<a href="#"><img src="/media/{{ hot_product.image }}" alt=""></a>
+					  </div>
 					</div>
-				</div>
+				  </div>
 
-				<div class="description">
-					<h3 class="big-bold">{{ product.name }}</h3>
-					<h3 class="red">{{ product.short_desc}}</h3>
-					<p class="price"> {{ product.price }} <span>руб</span></p>
-					<a href="#" class="red-button">
-						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+				  <div class="description">
+					<h3 class="big-bold">{{ hot_product.name }}</h3>
+					<h3 class="red">горячее предложение</h3>
+					<p class="price">{{ hot_product.price }} <span>руб</span></p>
+					<a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
+					  заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
 					</a>
 					<div class="description-text">
-						<p>Расположитесь комфортно.</p>
-						<p>Отличное качество материалов
-						позволит вам это.</p>
-						<p>Различные цвета</p>
-						<p>высочайший уровень
-						эргономики и прочность.</p>
+					  {{ hot_product.description }}
 					</div>
 				</div>
 			</div>
+
 
 			<div class="related">
 				<div class="title clearfix">
